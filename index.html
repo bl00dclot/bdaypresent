@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Present</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        h1{
+            margin: 0;
+        }
+        </style>
+</head>
+<body>
+    <div id="present_box">
+        <h1 style="position:absolute; z-index: 1;">klik ze present</h1>
+        <img src="./10464058.png" alt="gift-box" style="width: 100%; height: 100%;">
+        
+    </div>
+    <div id="present">
+    </div>
+    <script>
+        const presentBox = document.getElementById('present_box');
+        const present = document.getElementById('present');
+        let presentState = 0;
+        presentBox.style.width = "100vw";
+        presentBox.style.height = "100vh";
+        present.style.width = "100vw";
+        present.style.height = "100vh";
+                present.style.backgroundColor = "green";
+        presentBox.style.display = "block";
+        present.style.display = "none";
+        present.style.justifyContent = "center";
+        present.style.alignItems = "center";
+                        const bbq = document.createElement('h1')
+                const bbqContent = document.createTextNode("BBQ");
+                bbq.appendChild(bbqContent);
+                bbq.style.fontSize = "100px";
+                bbq.style.position = "absolute";
+                bbq.style.alignSelf = "end"
+                function strobeColor(element, color1, color2, duration) {
+                    let isColor1 = true;
+                    setInterval(() => {
+                        element.style.color = isColor1 ? color1 : color2;
+                        isColor1 = !isColor1;
+                    }, 100);
+                }
+                newIMG = document.createElement('img');
+                newIMG.src = "./present.gif";
+                newIMG.style.width = "75%";
+                newIMG.style.height = "75%";
+                
+        presentBox.onclick = function() {
+            if (presentState === 0) {
+                presentBox.style.display = "none";
+                present.style.display = "flex";
+                present.appendChild(newIMG);
+                                present.appendChild(bbq);
+                strobeColor(bbq, "blue", "yellow", 1000);
+
+                presentState = 1;
+            }
+        };
+        present.onclick = function() {
+            if (presentState === 1) {
+                presentBox.style.display = "block";
+                present.style.display = "none";
+                presentState = 0;
+            }
+        };
+    </script>
+</body>
+</html>
